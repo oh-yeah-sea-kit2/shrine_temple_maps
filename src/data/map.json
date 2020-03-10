@@ -1,0 +1,52 @@
+{
+  "features": [{
+      "geometry": {
+        "coordinates": [140.3571334, 35.6343793],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "千葉県山武市木原311番",
+        "googlemaps_url": "http://maps.google.com/maps?q=35.6343793,140.3571334",
+        "name": "五靈神社"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [140.3571334, 35.6343793],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "千葉県山武市木原454番",
+        "googlemaps_url": "http://maps.google.com/maps?q=35.6343793,140.3571334",
+        "name": "稲荷神社"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [140.3571334, 35.6343793],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "千葉県山武市木原1788番",
+        "googlemaps_url": "http://maps.google.com/maps?q=35.6343793,140.3571334",
+        "name": "六所神社"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [140.3291286, 35.6555493],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "千葉県山武市大木166番1",
+        "googlemaps_url": "http://maps.google.com/maps?q=35.6555493,140.3291286",
+        "name": "大木神社"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

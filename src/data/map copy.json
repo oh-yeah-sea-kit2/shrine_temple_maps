@@ -1,0 +1,10 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [139.729260969094, 35.6604319722521]
+  },
+  "properties": {
+    "name": "森美術館"
+  }
+}
