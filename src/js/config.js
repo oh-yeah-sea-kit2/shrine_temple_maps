@@ -9,6 +9,8 @@ const shrine_api = new Object({
 
 
 const zoomToMeter = new Object({
+  20: 100,
+  19: 100,
   18: 200,
   17: 400,
   16: 600,
