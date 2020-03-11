@@ -16,6 +16,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   maxZoom: 20,
   maxNativeZoom: 18,
+  minZoom: 5,
   id: 'mapbox/streets-v11',
   tileSize: 512,
   zoomOffset: -1,
@@ -26,7 +27,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 L.control.scale({ imperial: false }).addTo(map);
 
 
+// // マップを動かすとマーカーが消えることを検証
 // var marker = L.marker([35.65863174, 139.74542422]).bindPopup("<h3>東京タワー</h3>").addTo(map);
+// console.log(marker);
+// function onMapMoved() {
+//   map.removeLayer(marker);
+// }
+// map.on('move', onMapMoved);
 
 function onLocationFound(e) {
   var radius = e.accuracy;
@@ -74,9 +81,10 @@ function getPosition() {
   navigator.geolocation.getCurrentPosition(
     // 取得成功した場合
     function(position) {
-      alert("緯度:" + position.coords.latitude + ",経度" + position.coords.longitude);
-      // let a = getPos(map);
-      // alert(zoomToMeter[a.zoom]);
+      let alert_msg = "緯度:" + position.coords.latitude + ",経度" + position.coords.longitude;
+      let a = getPos(map);
+      alert_msg = alert_msg + "\nzoom : " + a.zoom + " (" + zoomToMeter[a.zoom] + "m)";
+      alert(alert_msg);
     },
     // 取得失敗した場合
     function(error) {
@@ -107,7 +115,7 @@ function getPosition() {
 //   });
 //   geojson.addTo(map);
 // });
-let add_geojson;
+var add_geojson;
 
 function getShrineFromLonLat() {
   console.log('exec getShrineFromLonLat()');
@@ -127,7 +135,9 @@ function getShrineFromLonLat() {
   }).done(function(json) {
     // console.log(json);
     // ピンのリセット
-    // map.removeLayer(add_geojson);
+    if (add_geojson != undefined) {
+      map.removeLayer(add_geojson);
+    }
 
     var obj = $.parseJSON(json);
     var data = new Object({
@@ -140,8 +150,8 @@ function getShrineFromLonLat() {
         layer.bindPopup(feature.properties.name + '<br>' + feature.properties.address);
       }
     });
-
     geojson.addTo(map);
+    // ピンリセットのためにマーカーを保存
     add_geojson = geojson;
 
   }).fail(function(jqXHR, textStatus, errorThrown) {
